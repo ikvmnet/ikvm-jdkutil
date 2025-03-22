@@ -63,6 +63,7 @@ namespace IKVM.JdkUtil.MSBuild.Tasks
 
             // return result
             JdkHomePath = jdk.Path;
+            JdkVersion = jdk.Version.ToString();
             return true;
         }
 
