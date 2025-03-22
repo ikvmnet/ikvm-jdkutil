@@ -33,10 +33,16 @@ namespace IKVM.JdkUtil.MSBuild.Tasks
         public string? Family { get; set; }
 
         /// <summary>
-        /// Destination for the resolved JDK path.
+        /// Home path of the resolved JDK.
         /// </summary>
         [Output]
-        public string? HomePath { get; set; }
+        public string? JdkHomePath { get; set; }
+
+        /// <summary>
+        /// Version of the resolved JDK.
+        /// </summary>
+        [Output]
+        public string? JdkVersion { get; set; }
 
         /// <inheritdoc />
         public override bool Execute()
@@ -56,7 +62,7 @@ namespace IKVM.JdkUtil.MSBuild.Tasks
                 return true;
 
             // return result
-            HomePath = jdk.Path;
+            JdkHomePath = jdk.Path;
             return true;
         }
 
