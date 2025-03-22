@@ -30,7 +30,16 @@ namespace IKVM.JdkUtil
         /// <returns></returns>
         public static IEnumerable<Jdk> Resolve()
         {
-            foreach (var d in Scan().Distinct())
+            return Resolve([], true, []);
+        }
+
+        /// <summary>
+        /// Finds and reads JDK installations.
+        /// </summary>
+        /// <returns></returns>
+        public static IEnumerable<Jdk> Resolve(IEnumerable<string> before, bool includeDefault, IEnumerable<string> after)
+        {
+            foreach (var d in before.Concat(Scan()).Concat(after).Distinct())
                 if (TryReadJdk(d, out var jdk) && jdk is not null)
                     yield return jdk;
         }
