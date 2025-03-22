@@ -1,0 +1,15 @@
+<Project Sdk="MSTest.Sdk/3.6.4">
+
+    <PropertyGroup>
+        <TargetFrameworks>net472;net6.0;net8.0;net9.0</TargetFrameworks>
+        <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
+        <TestingPlatformShowTestsFailure>true</TestingPlatformShowTestsFailure>
+        <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\IKVM.JdkUtil\IKVM.JdkUtil.csproj" />
+    </ItemGroup>
+
+</Project>

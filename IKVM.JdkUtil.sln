@@ -1,0 +1,62 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35828.75
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IKVM.JdkUtil", "src\IKVM.JdkUtil\IKVM.JdkUtil.csproj", "{947A9791-0FEB-998B-76B6-8EA0395F52CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IKVM.JdkUtil.Tests", "src\IKVM.JdkUtil.Tests\IKVM.JdkUtil.Tests.csproj", "{45CF1632-6D4D-44D7-8C97-B48A304581CA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
+		GitVersion.yml = GitVersion.yml
+		global.json = global.json
+		LICENSE.md = LICENSE.md
+		.github\workflows\IKVM.JdkUtil.yml = .github\workflows\IKVM.JdkUtil.yml
+		IKVM.JdkUtil.dist.msbuildproj = IKVM.JdkUtil.dist.msbuildproj
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dist", "dist", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dist-nuget", "src\dist-nuget\dist-nuget.csproj", "{52D4FE86-2EB0-A77A-A7E9-A6F41ACB229F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dist-tests", "src\dist-tests\dist-tests.csproj", "{7C6C49A0-4163-9D76-65CA-78087A255429}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{947A9791-0FEB-998B-76B6-8EA0395F52CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{947A9791-0FEB-998B-76B6-8EA0395F52CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{947A9791-0FEB-998B-76B6-8EA0395F52CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{947A9791-0FEB-998B-76B6-8EA0395F52CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45CF1632-6D4D-44D7-8C97-B48A304581CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45CF1632-6D4D-44D7-8C97-B48A304581CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45CF1632-6D4D-44D7-8C97-B48A304581CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45CF1632-6D4D-44D7-8C97-B48A304581CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52D4FE86-2EB0-A77A-A7E9-A6F41ACB229F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52D4FE86-2EB0-A77A-A7E9-A6F41ACB229F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52D4FE86-2EB0-A77A-A7E9-A6F41ACB229F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52D4FE86-2EB0-A77A-A7E9-A6F41ACB229F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C6C49A0-4163-9D76-65CA-78087A255429}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C6C49A0-4163-9D76-65CA-78087A255429}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C6C49A0-4163-9D76-65CA-78087A255429}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C6C49A0-4163-9D76-65CA-78087A255429}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{52D4FE86-2EB0-A77A-A7E9-A6F41ACB229F} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{7C6C49A0-4163-9D76-65CA-78087A255429} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {40274DD9-C12F-439C-8FAC-06C91A46D3EC}
+	EndGlobalSection
+EndGlobal
