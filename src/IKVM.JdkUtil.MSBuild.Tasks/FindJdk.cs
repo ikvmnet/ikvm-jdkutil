@@ -30,7 +30,7 @@ namespace IKVM.JdkUtil.MSBuild.Tasks
         /// <summary>
         /// Sets the JDK family version (8, 9, etc) to search for.
         /// </summary>
-        public int? Family { get; set; }
+        public string? Family { get; set; }
 
         /// <summary>
         /// Destination for the resolved JDK path.
@@ -41,9 +41,13 @@ namespace IKVM.JdkUtil.MSBuild.Tasks
         /// <inheritdoc />
         public override bool Execute()
         {
+            var family = default(int?);
+            if (string.IsNullOrWhiteSpace(Family) == false)
+                family = int.Parse(Family);
+
             var q = Jdk.Resolve(Before ?? [], IncludeDefault, After ?? []);
-            if (Family != null)
-                q = q.Where(i => i.Family == Family);
+            if (family != null)
+                q = q.Where(i => i.Family == family);
 
             // find latest version
             q = q.OrderByDescending(i => i.Version);
