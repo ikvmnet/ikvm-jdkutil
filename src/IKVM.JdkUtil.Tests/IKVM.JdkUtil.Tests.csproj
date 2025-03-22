@@ -1,4 +1,4 @@
-<Project Sdk="MSTest.Sdk/3.6.4">
+<Project Sdk="MSTest.Sdk">
 
     <PropertyGroup>
         <TargetFrameworks>net472;net6.0;net8.0;net9.0</TargetFrameworks>
@@ -7,6 +7,10 @@
         <TestingPlatformShowTestsFailure>true</TestingPlatformShowTestsFailure>
         <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
     </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="FluentAssertions" Version="8.2.0" />
+    </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\IKVM.JdkUtil\IKVM.JdkUtil.csproj" />

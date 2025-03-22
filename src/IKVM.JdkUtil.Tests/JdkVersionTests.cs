@@ -1,0 +1,28 @@
+﻿using FluentAssertions;
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+namespace IKVM.JdkUtil.Tests
+{
+
+    [TestClass]
+    public class JdkVersionTests
+    {
+
+        [TestMethod]
+        public void CanParseJdk8Version()
+        {
+            var v = JdkVersion.Parse("1.8.1");
+            v.Feature.Should().Be(1);
+        }
+
+        [TestMethod]
+        public void CanParseJdk9Version()
+        {
+            var v = JdkVersion.Parse("9.0.0");
+            v.Feature.Should().Be(9);
+        }
+
+    }
+
+}

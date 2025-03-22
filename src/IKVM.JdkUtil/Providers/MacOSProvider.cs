@@ -36,14 +36,28 @@ namespace IKVM.JdkUtil.Providers
                         yield return Path.Combine(dir, "Contents", "Home");
         }
 
+        /// <summary>
+        /// Runs the OSX java_home utility to detect SDKs.
+        /// </summary>
+        /// <returns></returns>
         IEnumerable<string> FromJavaHomeUtil()
         {
+            if (File.Exists("/usr/libexec/java_home") == false)
+                yield break;
+
             var lines = new List<string>();
-            Cli.Wrap("/usr/libexec/java_home")
-                .WithStandardErrorPipe(PipeTarget.ToDelegate(lines.Add))
-                .ExecuteAsync()
-                .GetAwaiter()
-                .GetResult();
+            try
+            {
+                Cli.Wrap("/usr/libexec/java_home")
+                    .WithStandardErrorPipe(PipeTarget.ToDelegate(lines.Add))
+                    .ExecuteAsync()
+                    .GetAwaiter()
+                    .GetResult();
+            }
+            catch
+            {
+
+            }
 
             foreach (var line in lines)
                 if (Directory.Exists(line))

@@ -149,9 +149,14 @@ namespace IKVM.JdkUtil
         public readonly int Update => _version.Length > 2 ? _version[2] : 0;
 
         /// <summary>
+        /// Returns the value of the patch element of the version number.
+        /// </summary>
+        public readonly int Patch => _version.Length > 3 ? _version[3] : 0;
+
+        /// <summary>
         /// Returns an unmodifiable list of the integers represented in the version number.
         /// </summary>
-        public ImmutableArray<int> Version => _version;
+        public readonly ImmutableArray<int> Version => _version;
 
         /// <summary>
         /// Returns the optional pre-release information.
@@ -184,7 +189,8 @@ namespace IKVM.JdkUtil
             return
                 _version.SequenceEqual(other._version) &&
                 _pre == other._pre &&
-                _build == other._build;
+                _build == other._build &&
+                _optional == other._optional;
         }
 
         /// <inheritdoc />

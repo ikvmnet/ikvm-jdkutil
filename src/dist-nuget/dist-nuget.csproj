@@ -9,6 +9,9 @@
         <PackageProjectReference Include="..\IKVM.JdkUtil\IKVM.JdkUtil.csproj">
             <PackageTargetPath>.</PackageTargetPath>
         </PackageProjectReference>
+        <PackageProjectReference Include="..\IKVM.JdkUtil.MSBuild\IKVM.JdkUtil.MSBuild.csproj">
+            <PackageTargetPath>.</PackageTargetPath>
+        </PackageProjectReference>
     </ItemGroup>
 
 </Project>

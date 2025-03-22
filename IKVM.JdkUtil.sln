@@ -14,9 +14,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Directory.Build.targets = Directory.Build.targets
 		GitVersion.yml = GitVersion.yml
 		global.json = global.json
-		LICENSE.md = LICENSE.md
-		.github\workflows\IKVM.JdkUtil.yml = .github\workflows\IKVM.JdkUtil.yml
 		IKVM.JdkUtil.dist.msbuildproj = IKVM.JdkUtil.dist.msbuildproj
+		.github\workflows\IKVM.JdkUtil.yml = .github\workflows\IKVM.JdkUtil.yml
+		LICENSE.md = LICENSE.md
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -25,6 +25,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dist-nuget", "src\dist-nuget\dist-nuget.csproj", "{52D4FE86-2EB0-A77A-A7E9-A6F41ACB229F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dist-tests", "src\dist-tests\dist-tests.csproj", "{7C6C49A0-4163-9D76-65CA-78087A255429}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IKVM.JdkUtil.MSBuild", "src\IKVM.JdkUtil.MSBuild\IKVM.JdkUtil.MSBuild.csproj", "{5C11E0A0-9535-4767-8FB8-11090A42E406}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IKVM.JdkUtil.MSBuild.Tasks", "src\IKVM.JdkUtil.MSBuild.Tasks\IKVM.JdkUtil.MSBuild.Tasks.csproj", "{6BFDB163-63BB-432F-83FA-B879227490A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,6 +52,14 @@ Global
 		{7C6C49A0-4163-9D76-65CA-78087A255429}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C6C49A0-4163-9D76-65CA-78087A255429}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C6C49A0-4163-9D76-65CA-78087A255429}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C11E0A0-9535-4767-8FB8-11090A42E406}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C11E0A0-9535-4767-8FB8-11090A42E406}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C11E0A0-9535-4767-8FB8-11090A42E406}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C11E0A0-9535-4767-8FB8-11090A42E406}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BFDB163-63BB-432F-83FA-B879227490A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BFDB163-63BB-432F-83FA-B879227490A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BFDB163-63BB-432F-83FA-B879227490A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BFDB163-63BB-432F-83FA-B879227490A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

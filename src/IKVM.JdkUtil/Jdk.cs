@@ -43,7 +43,8 @@ namespace IKVM.JdkUtil
         {
             foreach (var p in PROVIDERS)
                 foreach (var d in p.Scan())
-                    yield return d;
+                    if (Directory.Exists(d))
+                        yield return System.IO.Path.GetFullPath(d);
         }
 
         /// <summary>
@@ -144,8 +145,12 @@ namespace IKVM.JdkUtil
         public static bool LooksLikeJdkHome(string path)
         {
             return path.IndexOf("jdk", StringComparison.InvariantCultureIgnoreCase) != -1 || path.IndexOf("java", StringComparison.InvariantCultureIgnoreCase) != -1;
-
         }
+
+        /// <summary>
+        /// Gets the Java family version (8, 9, etc).
+        /// </summary>
+        public int Family => Version.Feature >= 9 ? Version.Feature : Version.Interim;
 
     }
 
