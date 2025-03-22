@@ -36,7 +36,7 @@ namespace IKVM.JdkUtil.MSBuild.Tasks
         /// Home path of the resolved JDK.
         /// </summary>
         [Output]
-        public string? JdkHomePath { get; set; }
+        public string? JdkPath { get; set; }
 
         /// <summary>
         /// Version of the resolved JDK.
@@ -62,7 +62,7 @@ namespace IKVM.JdkUtil.MSBuild.Tasks
                 return true;
 
             // return result
-            JdkHomePath = jdk.Path;
+            JdkPath = jdk.Path;
             JdkVersion = jdk.Version.ToString();
             return true;
         }
