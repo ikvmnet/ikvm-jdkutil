@@ -40,7 +40,8 @@ namespace IKVM.JdkUtil
         /// <returns></returns>
         public static IEnumerable<Jdk> Resolve(IEnumerable<string> before, bool includeDefault, IEnumerable<string> after)
         {
-            foreach (var d in Normalize(before.Concat(Scan()).Concat(after)).Distinct())
+            var defaultPaths = includeDefault ? Scan() : [];
+            foreach (var d in Normalize(before.Concat(defaultPaths).Concat(after)).Distinct())
                 if (TryReadJdk(d, out var jdk) && jdk is not null)
                     yield return jdk;
         }
