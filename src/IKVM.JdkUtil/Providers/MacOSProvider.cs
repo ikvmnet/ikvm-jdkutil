@@ -31,8 +31,9 @@ namespace IKVM.JdkUtil.Providers
         IEnumerable<string> FromDefaultInstallationLocation()
         {
             foreach (var baseDir in JDK_BASE_DIRS)
-                foreach (var dir in Directory.GetDirectories(Path.Combine(baseDir)))
-                    yield return Path.Combine(dir, "Contents", "Home");
+                if (Directory.Exists(baseDir))
+                    foreach (var dir in Directory.GetDirectories(Path.Combine(baseDir)))
+                        yield return Path.Combine(dir, "Contents", "Home");
         }
 
         IEnumerable<string> FromJavaHomeUtil()

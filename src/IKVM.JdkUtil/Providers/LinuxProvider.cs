@@ -18,8 +18,9 @@ namespace IKVM.JdkUtil.Providers
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
                 foreach (var baseDir in JDK_BASE_DIRS)
-                    foreach (var dir in Directory.GetDirectories(baseDir))
-                        yield return dir;
+                    if (Directory.Exists(baseDir))
+                        foreach (var dir in Directory.GetDirectories(baseDir))
+                            yield return dir;
 
         }
 

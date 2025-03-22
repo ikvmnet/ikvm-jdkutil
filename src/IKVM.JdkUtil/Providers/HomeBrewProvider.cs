@@ -35,9 +35,10 @@ namespace IKVM.JdkUtil.Providers
 
         IEnumerable<string> ScanHomeBrew(string homeBrewPath)
         {
-            foreach (var dir in Directory.EnumerateDirectories(homeBrewPath))
-                if (Jdk.LooksLikeJdkHome(dir))
-                    yield return dir;
+            if (Directory.Exists(homeBrewPath))
+                foreach (var dir in Directory.EnumerateDirectories(homeBrewPath))
+                    if (Jdk.LooksLikeJdkHome(dir))
+                        yield return dir;
         }
 
     }
