@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 using Microsoft.Build.Framework;
 using Microsoft.Build.Utilities;
@@ -44,6 +46,12 @@ namespace IKVM.JdkUtil.MSBuild.Tasks
         [Output]
         public string? JdkVersion { get; set; }
 
+        /// <summary>
+        /// Gets the full set of JDKs that match.
+        /// </summary>
+        [Output]
+        public ITaskItem[]? JdkList { get; set; }
+
         /// <inheritdoc />
         public override bool Execute()
         {
@@ -64,7 +72,22 @@ namespace IKVM.JdkUtil.MSBuild.Tasks
             // return result
             JdkPath = jdk.Path;
             JdkVersion = jdk.Version.ToString();
+            JdkList = q.Select(i => ToTaskItem(i)).ToArray();
             return true;
+        }
+
+        /// <summary>
+        /// Transforms the <see cref="Jdk"/> into a <see cref="TaskItem"/>.
+        /// </summary>
+        /// <param name="jdk"></param>
+        /// <returns></returns>
+        TaskItem ToTaskItem(Jdk jdk)
+        {
+            return new TaskItem(jdk.Path, new Dictionary<string, string?>()
+            {
+                ["Path"] = jdk.Path,
+                ["Version"] = jdk.Version.ToString(),
+            });
         }
 
     }
