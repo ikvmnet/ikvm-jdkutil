@@ -22,6 +22,7 @@ namespace IKVM.JdkUtil
             new LinuxProvider(),
             new MacOSProvider(),
             new HomeBrewProvider(),
+            new EnvProvider(),
         ];
 
         /// <summary>
@@ -39,9 +40,34 @@ namespace IKVM.JdkUtil
         /// <returns></returns>
         public static IEnumerable<Jdk> Resolve(IEnumerable<string> before, bool includeDefault, IEnumerable<string> after)
         {
-            foreach (var d in before.Concat(Scan()).Concat(after).Distinct())
+            foreach (var d in Normalize(before.Concat(Scan()).Concat(after)).Distinct())
                 if (TryReadJdk(d, out var jdk) && jdk is not null)
                     yield return jdk;
+        }
+
+        /// <summary>
+        /// Normalizes the path elements.
+        /// </summary>
+        /// <param name="paths"></param>
+        /// <returns></returns>
+        static IEnumerable<string> Normalize(IEnumerable<string> paths)
+        {
+            foreach (var path in paths)
+                yield return Normalize(path);
+        }
+
+        /// <summary>
+        /// Normalizes the path element, removing trailing slashes.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        static string Normalize(string path)
+        {
+            path = System.IO.Path.GetFullPath(path);
+            if (path.EndsWith(System.IO.Path.DirectorySeparatorChar))
+                path = path.TrimEnd(System.IO.Path.DirectorySeparatorChar);
+
+            return path;
         }
 
         /// <summary>
