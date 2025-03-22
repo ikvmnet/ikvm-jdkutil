@@ -63,16 +63,18 @@ namespace IKVM.JdkUtil.MSBuild.Tasks
             if (family != null)
                 q = q.Where(i => i.Family == family);
 
-            // find latest version
+            // sort and set the output list
             q = q.OrderByDescending(i => i.Version);
-            var jdk = q.FirstOrDefault();
-            if (jdk == null)
-                return true;
+            JdkList = q.Select(ToTaskItem).ToArray();
 
-            // return result
-            JdkPath = jdk.Path;
-            JdkVersion = jdk.Version.ToString();
-            JdkList = q.Select(i => ToTaskItem(i)).ToArray();
+            // select the primary match
+            var jdk = q.FirstOrDefault();
+            if (jdk is not null)
+            {
+                JdkPath = jdk.Path;
+                JdkVersion = jdk.Version.ToString();
+            }
+
             return true;
         }
 
