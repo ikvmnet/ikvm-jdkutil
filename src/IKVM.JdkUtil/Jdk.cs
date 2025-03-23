@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 
+using CliWrap;
+
 using IKVM.JdkUtil.Providers;
 
 namespace IKVM.JdkUtil
@@ -122,7 +124,7 @@ namespace IKVM.JdkUtil
             if (TryReadVersionFromRelease(path, out version))
                 return true;
 
-            if (TryReadVersionFromPath(path, out version))
+            if (TryReadVersionFromExecutable(path, out version))
                 return true;
 
             version = default;
@@ -167,9 +169,49 @@ namespace IKVM.JdkUtil
         /// <param name="path"></param>
         /// <param name="version"></param>
         /// <returns></returns>
-        static bool TryReadVersionFromPath(string path, out JdkVersion version)
+        static bool TryReadVersionFromExecutable(string path, out JdkVersion version)
         {
             version = default;
+
+            var javaExe = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "java.exe" : "java";
+            if (File.Exists(System.IO.Path.Combine(path, "bin", javaExe)) == false)
+                return false;
+
+            var lines = new List<string>();
+            try
+            {
+                Cli.Wrap(System.IO.Path.Combine(path, "bin", javaExe))
+                    .WithArguments("-XshowSettings:properties")
+                    .WithStandardOutputPipe(PipeTarget.Null)
+                    .WithStandardErrorPipe(PipeTarget.ToDelegate(lines.Add))
+                    .WithValidation(CommandResultValidation.None)
+                    .ExecuteAsync()
+                    .GetAwaiter()
+                    .GetResult();
+            }
+            catch
+            {
+                return false;
+            }
+
+            foreach (var line in lines)
+            {
+                var l = line.Trim();
+                if (l.StartsWith("java.runtime.version = ") == false)
+                    continue;
+
+                try
+                {
+                    version = JdkVersion.Parse(l.Remove(0, 23));
+                    Console.WriteLine(version);
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+
             return false;
         }
 

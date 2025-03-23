@@ -1,6 +1,4 @@
-﻿using System;
-
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace IKVM.JdkUtil.Tests
 {
@@ -9,11 +7,13 @@ namespace IKVM.JdkUtil.Tests
     public sealed class JdkTests
     {
 
+        public TestContext TestContext { get; set; }
+
         [TestMethod]
         public void CanResolveJdks()
         {
             foreach (var i in Jdk.Resolve())
-                Console.WriteLine(i);
+                TestContext.WriteLine(i.ToString());
         }
 
     }

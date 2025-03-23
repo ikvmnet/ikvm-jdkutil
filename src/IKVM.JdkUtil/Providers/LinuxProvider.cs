@@ -21,7 +21,6 @@ namespace IKVM.JdkUtil.Providers
                     if (Directory.Exists(baseDir))
                         foreach (var dir in Directory.GetDirectories(baseDir))
                             yield return dir;
-
         }
 
     }
