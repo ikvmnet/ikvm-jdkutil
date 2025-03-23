@@ -66,9 +66,15 @@ namespace IKVM.JdkUtil
         /// <returns></returns>
         static string Normalize(string path)
         {
+#if NET
+            if (new DirectoryInfo(path).LinkTarget is string target)
+                path = target;
+#endif
+
             path = System.IO.Path.GetFullPath(path);
             if (path.EndsWith(System.IO.Path.DirectorySeparatorChar) == false)
                 path += System.IO.Path.DirectorySeparatorChar;
+
 
             return path;
         }

@@ -34,6 +34,13 @@
             <PublishPackagePath>tasks\netstandard2.0</PublishPackagePath>
             <Pack>true</Pack>
         </PublishProjectReference>
+        <PublishProjectReference Include="..\IKVM.JdkUtil.MSBuild.Tasks\IKVM.JdkUtil.MSBuild.Tasks.csproj">
+            <SetTargetFramework>TargetFramework=net6.0</SetTargetFramework>
+            <PublishTargetPath Condition=" '$(TargetFramework)' == 'net6.0' ">tasks</PublishTargetPath>
+            <CopyToOutputDirectory Condition=" '$(TargetFramework)' == 'net6.0' ">PreserveNewest</CopyToOutputDirectory>
+            <PublishPackagePath>tasks\net6.0</PublishPackagePath>
+            <Pack>true</Pack>
+        </PublishProjectReference>
     </ItemGroup>
 
 </Project>
