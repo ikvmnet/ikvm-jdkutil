@@ -23,20 +23,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Remove="buildMultiTargeting\IKVM.JdkUtil.MSBuild.props" />
-      <None Remove="buildMultiTargeting\IKVM.JdkUtil.MSBuild.targets" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Content Include="buildMultiTargeting\IKVM.JdkUtil.MSBuild.props">
-        <PackagePath>build\%(RecursiveDir)%(Filename)%(Extension)</PackagePath>
-      </Content>
-      <Content Include="buildMultiTargeting\IKVM.JdkUtil.MSBuild.targets">
-        <PackagePath>build\%(RecursiveDir)%(Filename)%(Extension)</PackagePath>
-      </Content>
-    </ItemGroup>
-
-    <ItemGroup>
         <None Include="..\..\LICENSE.md" Pack="true" PackagePath="." />
         <None Include="..\..\README.md" Pack="true" PackagePath="." />
     </ItemGroup>
