@@ -1,0 +1,13 @@
+﻿<Project>
+    <PropertyGroup>
+        <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <IkvmJdkUtilTaskAssembly>$(MSBuildThisFileDirectory)..\tasks\netstandard2.0\IKVM.JdkUtil.MSBuild.Tasks.dll</IkvmJdkUtilTaskAssembly>
+        <IkvmJdkUtilTaskAssembly Condition=" '$(MSBuildRuntimeType)' == 'Core' ">$(MSBuildThisFileDirectory)..\tasks\net6.0\IKVM.JdkUtil.MSBuild.Tasks.dll</IkvmJdkUtilTaskAssembly>
+    </PropertyGroup>
+
+    <UsingTask TaskName="FindJdk" AssemblyFile="$(IkvmJdkUtilTaskAssembly)" Condition="Exists('$(IkvmJdkUtilTaskAssembly)')" />
+
+</Project>
