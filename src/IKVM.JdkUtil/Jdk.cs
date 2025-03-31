@@ -209,7 +209,6 @@ namespace IKVM.JdkUtil
                 try
                 {
                     version = JdkVersion.Parse(l.Remove(0, 23));
-                    Console.WriteLine(version);
                     return true;
                 }
                 catch
